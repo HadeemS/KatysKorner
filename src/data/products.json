@@ -1,0 +1,86 @@
+[
+  {
+    "id": "hoodie-1",
+    "name": "Cozy Fleece Hoodie",
+    "category": "Hoodies",
+    "price": 4499,
+    "description": "Soft fleece hoodie perfect for cool days. Unisex fit.",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["Forest Green", "Cream", "Black"],
+    "image": "",
+    "checkoutUrl": "https://buy.stripe.com/test_xxx1"
+  },
+  {
+    "id": "hoodie-2",
+    "name": "Oversized Graphic Hoodie",
+    "category": "Hoodies",
+    "price": 4999,
+    "description": "Relaxed fit hoodie with minimal branding.",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["Olive", "White"],
+    "image": "",
+    "checkoutUrl": "https://buy.stripe.com/test_xxx2"
+  },
+  {
+    "id": "shirt-1",
+    "name": "Classic Tee",
+    "category": "Shirts",
+    "price": 2499,
+    "description": "Premium cotton tee. Timeless everyday wear.",
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": ["White", "Forest Green", "Navy"],
+    "image": "",
+    "checkoutUrl": "https://buy.stripe.com/test_xxx3"
+  },
+  {
+    "id": "shirt-2",
+    "name": "Long Sleeve Crew",
+    "category": "Shirts",
+    "price": 2999,
+    "description": "Comfortable long sleeve crewneck.",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["Cream", "Green"],
+    "image": "",
+    "checkoutUrl": "https://buy.stripe.com/test_xxx4"
+  },
+  {
+    "id": "jogger-1",
+    "name": "Comfort Joggers",
+    "category": "Joggers",
+    "price": 3999,
+    "description": "Relaxed joggers with ribbed cuffs. Perfect for lounging.",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["Black", "Grey", "Olive"],
+    "image": "",
+    "checkoutUrl": "https://buy.stripe.com/test_xxx5"
+  },
+  {
+    "id": "mug-1",
+    "name": "Ceramic Mug",
+    "category": "Mugs",
+    "price": 1499,
+    "description": "15oz ceramic mug. Dishwasher safe.",
+    "image": "",
+    "checkoutUrl": "https://buy.stripe.com/test_xxx6"
+  },
+  {
+    "id": "cup-1",
+    "name": "Insulated Travel Cup",
+    "category": "Cups",
+    "price": 2499,
+    "description": "20oz stainless steel insulated tumbler. Keeps drinks hot or cold.",
+    "colors": ["Green", "White", "Black"],
+    "image": "",
+    "checkoutUrl": "https://buy.stripe.com/test_xxx7"
+  },
+  {
+    "id": "hat-1",
+    "name": "Dad Cap",
+    "category": "Accessories",
+    "price": 1999,
+    "description": "Unstructured cap with embroidered logo.",
+    "colors": ["Forest Green", "Cream", "Navy"],
+    "image": "",
+    "checkoutUrl": "https://buy.stripe.com/test_xxx8"
+  }
+]
