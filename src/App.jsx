@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -10,20 +10,29 @@ import Policies from './pages/Policies'
 import Contact from './pages/Contact'
 import './styles.css'
 
+function AnimatedRoutes() {
+  const location = useLocation()
+  return (
+    <div key={location.pathname} className="page-transition">
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/policies" element={<Policies />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <CartProvider>
       <HashRouter>
         <div className="app">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/policies" element={<Policies />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+          <AnimatedRoutes />
           <Footer />
         </div>
       </HashRouter>

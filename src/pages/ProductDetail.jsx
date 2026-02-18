@@ -4,6 +4,22 @@ import { useCart } from '../context/CartContext'
 import { formatCurrency } from '../utils/formatCurrency'
 import productsData from '../data/products.json'
 
+const COLOR_HEX = {
+  'Forest Green': '#2d5a3d',
+  'Cream': '#f5f5dc',
+  'Black': '#1a1a1a',
+  'Olive': '#6b8e23',
+  'White': '#ffffff',
+  'Navy': '#000080',
+  'Grey': '#808080',
+  'Gray': '#808080',
+  'Green': '#2d5a3d',
+}
+
+function getColorHex(name) {
+  return COLOR_HEX[name] || '#c5cec8'
+}
+
 export default function ProductDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -17,7 +33,7 @@ export default function ProductDetail() {
     return (
       <main className="page">
         <p>Product not found.</p>
-        <button type="button" className="btn" onClick={() => navigate('/shop')}>Back to Shop</button>
+        <button type="button" className="btn btn-primary" onClick={() => navigate('/shop')}>Back to Shop</button>
       </main>
     )
   }
@@ -50,56 +66,97 @@ export default function ProductDetail() {
           <h1>{product.name}</h1>
           <p className="product-detail-price">{formatCurrency(product.price)}</p>
           <p className="product-detail-desc">{product.description}</p>
+
           {hasSizes && (
             <div>
-              <label htmlFor="product-size">Size</label>
-              <select
-                id="product-size"
-                value={selectedSize}
-                onChange={(e) => setSelectedSize(e.target.value)}
-                required={hasSizes}
-                aria-required={hasSizes}
-              >
-                <option value="">Select size</option>
+              <label>Size</label>
+              <div className="size-pills">
                 {product.sizes.map((s) => (
-                  <option key={s} value={s}>{s}</option>
+                  <button
+                    key={s}
+                    type="button"
+                    className={`size-pill ${selectedSize === s ? 'selected' : ''}`}
+                    onClick={() => setSelectedSize(s)}
+                    aria-pressed={selectedSize === s}
+                  >
+                    {s}
+                  </button>
                 ))}
-              </select>
+              </div>
             </div>
           )}
+
           {hasColors && (
-            <div>
-              <label htmlFor="product-color">Color</label>
-              <select
-                id="product-color"
-                value={selectedColor}
-                onChange={(e) => setSelectedColor(e.target.value)}
-                required={hasColors}
-                aria-required={hasColors}
-              >
-                <option value="">Select color</option>
+            <div style={{ marginTop: '1rem' }}>
+              <label>Color</label>
+              <div className="color-swatches">
                 {product.colors.map((c) => (
-                  <option key={c} value={c}>{c}</option>
+                  <button
+                    key={c}
+                    type="button"
+                    className={`color-swatch ${selectedColor === c ? 'selected' : ''}`}
+                    style={{ backgroundColor: getColorHex(c) }}
+                    onClick={() => setSelectedColor(c)}
+                    aria-pressed={selectedColor === c}
+                    title={c}
+                  />
                 ))}
-              </select>
+              </div>
             </div>
           )}
+
           <div className="product-detail-actions">
-            <label htmlFor="product-qty">Quantity</label>
-            <input
-              id="product-qty"
-              type="number"
-              min="1"
-              value={qty}
-              onChange={(e) => setQty(Math.max(1, parseInt(e.target.value, 10) || 1))}
-              aria-label="Quantity"
-            />
+            <label style={{ display: 'block', marginTop: '1rem', marginBottom: '0.5rem' }}>Quantity</label>
+            <div className="qty-stepper">
+              <button
+                type="button"
+                onClick={() => setQty((prev) => Math.max(1, prev - 1))}
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+              <input
+                type="number"
+                min="1"
+                value={qty}
+                onChange={(e) => setQty(Math.max(1, parseInt(e.target.value, 10) || 1))}
+                aria-label="Quantity"
+              />
+              <button
+                type="button"
+                onClick={() => setQty((prev) => prev + 1)}
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
             <button type="button" className="btn btn-primary" onClick={handleAddToCart}>
               Add to Cart
             </button>
             <button type="button" className="btn btn-secondary" onClick={handleBuyNow}>
               Buy Now
             </button>
+          </div>
+
+          <div className="details-accordion">
+            <details>
+              <summary>Material</summary>
+              <div className="accordion-body">
+                Premium cotton blend. Soft, durable, and built to last.
+              </div>
+            </details>
+            <details>
+              <summary>Care</summary>
+              <div className="accordion-body">
+                Machine wash cold. Tumble dry low. Do not bleach.
+              </div>
+            </details>
+            <details>
+              <summary>Shipping</summary>
+              <div className="accordion-body">
+                Ships within 3–5 business days. Free shipping on orders over $50.
+              </div>
+            </details>
           </div>
         </div>
       </div>
